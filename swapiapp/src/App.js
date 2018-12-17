@@ -1,28 +1,42 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import CardContainer from './CardContainer';
+import NavBar from './NavBar';
+import Header from './Header';
 import './App.css';
 
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor() {
+      super()
+      this.state = {
+        data : []
+      }
+      console.log(`Constructor's state is ${this.state.data}`);
+    }
+
+    componentDidMount() {
+      const url = 'https://jsonplaceholder.typicode.com/users';
+
+      fetch(url)
+        .then(response => response.json())
+        .then(result => this.setState({ data: result }));
+
+      console.log(`componentDidMount's state is ${this.state.data}`);
+    }
+
+    render() {
+        console.log(`render's state is ${this.state.data}`);
+        const { data } = this.state;
+
+
+        return (
+            <div className='App'>
+                <NavBar />
+                <Header />
+                <CardContainer data={data}/>
+            </div>
+        )
+    }
 }
 
 export default App;
