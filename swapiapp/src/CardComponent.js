@@ -1,12 +1,20 @@
 import React from 'react';
 import './App.css';
 
-const CardComponent = ({data}) => {
+const CardComponent = ({name, species, films}) => {
   return (
     <div className='Card'>
-      <h3>Card Title</h3>
-      <h4>Category</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quaerat error alias enim quam fuga at facilis magni nesciunt consequatur iure quia asperiores earum molestias ex, libero, harum aliquid assumenda.</p>
+      <h3>{name}</h3>
+      <h4>{species}</h4>
+      <div>Appears in:
+        <ul>
+          {films.map((film, index) => (
+            <li key={film.index}>
+              {film}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

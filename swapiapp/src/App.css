@@ -8,6 +8,8 @@
   font-style:normal;
 }
 
+/*http://www.iconarchive.com/show/starwars-icons-by-sensibleworld/C3PO-icon.html*/
+
 *, *:after, *:before {
   box-sizing: border-box;
 }
@@ -59,9 +61,23 @@ body {
 }
 
 .Card {
-  width: 400px;
   border: 2px solid white;
   border-radius: 10px;
   margin: 20px;
   padding: 10px;
+  flex: 1 1;
+}
+
+.Card h3{
+  border-bottom: 2px solid orange;
+}
+
+.Card h4{
+  color: orange;
+}
+
+.Card p{
+  text-align: center;
+  font-weight: 600;
+  font-style: italic;
 }

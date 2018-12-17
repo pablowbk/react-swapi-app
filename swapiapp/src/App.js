@@ -11,23 +11,20 @@ class App extends Component {
       this.state = {
         data : []
       }
-      console.log(`Constructor's state is ${this.state.data}`);
+
     }
 
     componentDidMount() {
-      const url = 'https://jsonplaceholder.typicode.com/users';
+      const url = 'https://swapi.co/api/people/';
 
       fetch(url)
         .then(response => response.json())
-        .then(result => this.setState({ data: result }));
+        .then(people => this.setState({ data: people.results }));
 
-      console.log(`componentDidMount's state is ${this.state.data}`);
     }
 
     render() {
-        console.log(`render's state is ${this.state.data}`);
         const { data } = this.state;
-
 
         return (
             <div className='App'>
