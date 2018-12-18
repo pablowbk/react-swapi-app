@@ -20,7 +20,7 @@ body {
 }
 
 .App {
-  background: black;
+  background: rgba(60,60,60,1);
   height: 100%;
 }
 
@@ -61,11 +61,11 @@ body {
 }
 
 .Card {
+  max-width: 400px;
   border: 2px solid white;
-  border-radius: 10px;
+  border-radius: 20px;
   margin: 20px;
-  padding: 10px;
-  flex: 1 1;
+  padding: 20px;
 }
 
 .Card h3{

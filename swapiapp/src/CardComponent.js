@@ -8,8 +8,8 @@ const CardComponent = ({name, species, films}) => {
       <h4>{species}</h4>
       <div>Appears in:
         <ul>
-          {films.map((film, index) => (
-            <li key={film.index}>
+          {films.map((film, i) => (
+            <li key={i}>
               {film}
             </li>
           ))}
