@@ -5,35 +5,44 @@ import Header from './Header';
 import './App.css';
 
 
+
 class App extends Component {
-    constructor() {
-      super()
-      this.state = {
-        data : []
-      }
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: [],
+      films: [],
+      species: '',
+    }
+
+  }
+
+  componentDidMount() {
+    const url = 'https://swapi.co/api/people/';
+
+    fetch(url)
+      .then(response => response.json())
+      .then(people => this.setState({ data: people.results }));
 
     }
 
-    componentDidMount() {
-      const url = 'https://swapi.co/api/people/';
 
-      fetch(url)
-        .then(response => response.json())
-        .then(people => this.setState({ data: people.results }));
 
-    }
-
-    render() {
-        const { data } = this.state;
-
-        return (
-            <div className='App'>
-                <NavBar />
-                <Header />
-                <CardContainer data={data}/>
-            </div>
-        )
-    }
+  render() {
+    const { data } = this.state;
+    return (
+      <div className='App'>
+          <NavBar />
+          <Header />
+          {
+            data.length === 0
+            ? <h3>Loading Cards...</h3>
+            : <h3>Cards Count: {data.length}</h3>
+          }
+          <CardContainer data={data} />
+      </div>
+    );
+  }
 }
 
 export default App;
