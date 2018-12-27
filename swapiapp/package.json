@@ -8,6 +8,7 @@
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
   },
+  "homepage": "https://pablowbk.github.io/react-swapi-app"
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
