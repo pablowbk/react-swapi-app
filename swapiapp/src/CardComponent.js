@@ -9,7 +9,7 @@ class CardComponent extends Component {
     super()
     this.state = {
       species: ['Fetching species...'],
-      films: 'Loading films...'
+      films: ['Loading films...']
     }
   }
 
@@ -24,6 +24,7 @@ class CardComponent extends Component {
         fetch(film)
         .then(resp => resp.json())
         .then(json => filmsArray.push(`Episode ${json.episode_id}: ${json.title}`))
+        // .then(resp => filmsArray.push(resp.title))
       );
     })
     this.setState({films:filmsArray})

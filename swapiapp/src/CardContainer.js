@@ -17,6 +17,7 @@ const CardContainer = ({ data }) => {
     <section className='CardContainer'>
       {cardList}
     </section>
+    
   );
 }
 
