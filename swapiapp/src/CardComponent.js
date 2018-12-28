@@ -18,7 +18,7 @@ class CardComponent extends Component {
       .then(resp => resp.json())
       .then(json => this.setState({species: json.name}))
 
-    // let filmsArray = [];
+
     // this.props.films.map(film => {
     //   return (
     //     fetch(film)
@@ -29,17 +29,25 @@ class CardComponent extends Component {
     // })
     // this.setState({films:filmsArray})
 
-
-    const promises = this.props.films.map(f => fetch(f)
+    const filmsArray = [];
+    const fetchFilms = this.props.films.map((filmUrl, i) => fetch(filmUrl)
         .then(res => res.json())
-        .then(data => data.title));
+        .then(data => {
+          filmsArray.push(`0${data.episode_id} - ${data.title}`);
+          filmsArray.sort();
+          }))
 
-    Promise.all(promises)
-        .then(fetchedArray => this.setState({films:fetchedArray}))
+    Promise.all(fetchFilms)
+        .then(fetchedArray => {
+          // filmsArray.push(fetchedArray);
+          // filmsArray.pop();
+          // this.setState({films: filmsArray});
+          // console.log(filmsArray)
+          this.setState({films:filmsArray})
+          })
         .catch((err) => console.log('error: ', err))
 
-    
-    console.log('state', this.state.films);
+
 
   }
 
@@ -52,10 +60,8 @@ class CardComponent extends Component {
     return (
       <div className='Card'>
         <h3>{ name }</h3>
-        {/* <h4 style={{fontStyle: 'italic'}}>The species.name value should be shown below... not the url</h4> */}
         <h4>{ this.state.species }</h4>
         <div>Featured in:
-          {/* <p style={{fontStyle: 'italic'}}>(movie titles should be show in the list below, not the urls...)</p> */}
             <ul>
               { this.state.films.map((film, i) => (
                 <li key={i}>
