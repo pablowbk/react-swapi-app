@@ -14,40 +14,25 @@ class CardComponent extends Component {
   }
 
   componentDidMount() {
+    // SPECIES //
     fetch(this.props.species[0])
       .then(resp => resp.json())
       .then(json => this.setState({species: json.name}))
 
-
-    // this.props.films.map(film => {
-    //   return (
-    //     fetch(film)
-    //     .then(resp => resp.json())
-    //     .then(json => filmsArray.push(`Episode ${json.episode_id}: ${json.title}`))
-    //     // .then(resp => filmsArray.push(resp.title))
-    //   );
-    // })
-    // this.setState({films:filmsArray})
+    // FILMS //
 
     const filmsArray = [];
+
     const fetchFilms = this.props.films.map((filmUrl, i) => fetch(filmUrl)
         .then(res => res.json())
         .then(data => {
           filmsArray.push(`0${data.episode_id} - ${data.title}`);
           filmsArray.sort();
-          }))
+        }));
 
     Promise.all(fetchFilms)
-        .then(fetchedArray => {
-          // filmsArray.push(fetchedArray);
-          // filmsArray.pop();
-          // this.setState({films: filmsArray});
-          // console.log(filmsArray)
-          this.setState({films:filmsArray})
-          })
+        .then(promisesArray => { this.setState({films:filmsArray}) })
         .catch((err) => console.log('error: ', err))
-
-
 
   }
 
