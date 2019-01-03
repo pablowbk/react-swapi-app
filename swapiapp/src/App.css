@@ -82,7 +82,7 @@ h3 {
 }
 
 .Card {
-  min-width: 265px;
+  min-width: 280px;
   border: 2px solid white;
   border-radius: 20px;
   margin: 20px;
@@ -100,8 +100,20 @@ h3 {
 }
 
 .Card ul {
-  padding-left: 20px;
+  padding-left: 15px;
   list-style-type: none;
+}
+
+.Card li:not(:last-of-type) {
+  padding-bottom: 5px;
+}
+
+.Card li:hover {
+  border-left: 2px solid orange;
+  border-right: 2px solid orange;
+  border-radius: 5px;
+  padding-left: 5px;
+  cursor: pointer;
 }
 
 .Card h3{

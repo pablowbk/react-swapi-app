@@ -15,9 +15,9 @@ class CardComponent extends Component {
 
   componentDidMount() {
     // SPECIES //
-    fetch(this.props.species[0])
-      .then(resp => resp.json())
-      .then(json => this.setState({species: json.name}))
+      fetch(this.props.species[0])
+        .then(resp => resp.json())
+        .then(json => this.setState({species: json.name}))
 
     // FILMS //
 

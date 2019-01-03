@@ -12,38 +12,52 @@ class App extends Component {
     super(props)
     this.state = {
       data: [],
-      films: [],
-      species: '',
       api_data: []
     };
 
   }
 
   componentDidMount() {
-    const url = 'https://swapi.co/api/people/';
+    // OLD WAY - only gets back the first page results
+    // const url = 'https://swapi.co/api/people/';
+    //
+    // fetch(url)
+    //   .then(response => response.json())
+    //   .then(people => this.setState( { data: people.results } ))
 
-    fetch(url)
-      .then(response => response.json())
-      .then(people => this.setState( { data: people.results } ))
+    // New, but messy, way...
+    const urlsArray = [];
 
+    for(let i = 1; i < 10; i++) {
+      urlsArray.push('https://swapi.co/api/people/?page=' + i.toString());
+    }
 
+    const charsData = [];
+
+    const charsFetch = urlsArray.map(url => fetch(url)
+        .then(res => res.json())
+        .then(data => data.results.map(user => charsData.push(user)))
+    );
+
+    Promise.all(charsFetch)
+      .then(results => this.setState({api_data: charsData}))
+      .catch((err) => console.log('ERROR, please check', err))
 
   }
 
 
-
   render() {
-    const { data } = this.state;
+    const { api_data } = this.state;
     return (
       <div className='App'>
           <NavBar />
           <Header />
           {
-            data.length === 0
+            api_data.length === 0
             ? <Loader /> //<h3>Loading Cards...</h3>
-            : <h3>Cards Count: { data.length }</h3>
+            : <h3>Cards Count: { api_data.length }</h3>
           }
-          <CardContainer data={ data } />
+          <CardContainer data={ api_data } />
       </div>
     );
   }
