@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CardContainer from './CardContainer';
 import NavBar from './NavBar';
 import Header from './Header';
+import Loader from './Loader';
 import './App.css';
 
 // const api_data = [];
@@ -26,6 +27,7 @@ class App extends Component {
       .then(people => this.setState( { data: people.results } ))
 
 
+
   }
 
 
@@ -38,7 +40,7 @@ class App extends Component {
           <Header />
           {
             data.length === 0
-            ? <h3>Loading Cards...</h3>
+            ? <Loader /> //<h3>Loading Cards...</h3>
             : <h3>Cards Count: { data.length }</h3>
           }
           <CardContainer data={ data } />
