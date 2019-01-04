@@ -3,6 +3,7 @@ import CardContainer from './CardContainer';
 import NavBar from './NavBar';
 import Header from './Header';
 import Loader from './Loader';
+import About from './About';
 import './App.css';
 
 // const api_data = [];
@@ -12,9 +13,11 @@ class App extends Component {
     super(props)
     this.state = {
       data: [],
-      api_data: []
+      api_data: [],
+      isVisible: false
     };
 
+    this.handleAboutClick = this.handleAboutClick.bind(this);
   }
 
   componentDidMount() {
@@ -45,19 +48,32 @@ class App extends Component {
 
   }
 
+  handleAboutClick(event) {
+    this.setState({isVisible: !this.state.isVisible});
+
+  }
+
 
   render() {
-    const { api_data } = this.state;
+    const { api_data, isVisible } = this.state;
     return (
       <div className='App'>
-          <NavBar />
+          <NavBar
+            handleClick={this.handleAboutClick}
+          />
           <Header />
           {
             api_data.length === 0
             ? <Loader /> //<h3>Loading Cards...</h3>
             : <h3>Cards Count: { api_data.length }</h3>
           }
-          <CardContainer data={ api_data } />
+          <CardContainer
+            data={ api_data }
+          />
+          <About
+            visibility={isVisible}
+            handleClick={this.handleAboutClick}
+          />
       </div>
     );
   }

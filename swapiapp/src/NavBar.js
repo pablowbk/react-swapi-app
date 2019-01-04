@@ -7,13 +7,13 @@ const navLiStyles = {
 
 
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <nav className='Nav'>
       <ul style={navLiStyles}>
         <li>Home</li>
         <li>Search</li>
-        <li>About</li>
+        <li onClick={props.handleClick}>About</li>
       </ul>
     </nav>
   )
