@@ -13,6 +13,14 @@ const About = (props) => {
         <p>
           As part of <strong>Andrei Neagoie</strong>'s course, I built this simple page App, using <strong>ReactJS</strong> and <strong>SWAPI</strong>. Basic functionality at the moment. Hope to enhance it eventually...
         </p>
+        <footer>
+          <h4>Follow me:</h4>
+          <div className="links">
+            <a href="https://twitter.com/wbkpablo" target="_blank">Twitter</a>
+            <a href="https://github.com/pablowbk" target="_blank">GitHub</a>
+            <a href="https://codepen.io/pablowbk/" target="_blank">CodePen</a>
+          </div>
+        </footer>
     </div>
   )
 }
