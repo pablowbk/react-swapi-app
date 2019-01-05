@@ -16,9 +16,9 @@ const About = (props) => {
         <footer>
           <h4>Follow me:</h4>
           <div className="links">
-            <a href="https://twitter.com/wbkpablo" target="_blank">Twitter</a>
-            <a href="https://github.com/pablowbk" target="_blank">GitHub</a>
-            <a href="https://codepen.io/pablowbk/" target="_blank">CodePen</a>
+            <a href="https://twitter.com/wbkpablo" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://github.com/pablowbk" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://codepen.io/pablowbk/" target="_blank" rel="noopener noreferrer">CodePen</a>
           </div>
         </footer>
     </div>
